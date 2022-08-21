@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/marcusprice/cli-chat-server/user"
+	"github.com/marcusprice/chat-server/user"
 )
 
 var u *user.User
