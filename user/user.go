@@ -7,11 +7,11 @@ type UserData struct {
 }
 
 type User struct {
-	userList map[string]UserData
+	userMap map[string]UserData
 }
 
 func (user User) UserExists(un string) bool {
-	if _, ok := user.userList[un]; ok {
+	if _, ok := user.userMap[un]; ok {
 		return true
 	}
 
@@ -19,12 +19,12 @@ func (user User) UserExists(un string) bool {
 }
 
 func (user *User) AddUser(ud UserData) {
-	user.userList[ud.UserName] = ud
+	user.userMap[ud.UserName] = ud
 }
 
 func (user User) GetListOfUsers(un string) []string {
 	var usernames []string
-	for k := range user.userList {
+	for k := range user.userMap {
 		if k == un {
 			continue
 		}
@@ -36,12 +36,12 @@ func (user User) GetListOfUsers(un string) []string {
 }
 
 func (user *User) RemoveUser(un string) {
-	delete(user.userList, un)
+	delete(user.userMap, un)
 }
 
 func InitUser() *User {
-	ul := make(map[string]UserData)
+	um := make(map[string]UserData)
 	return &User{
-		userList: ul,
+		userMap: um,
 	}
 }
